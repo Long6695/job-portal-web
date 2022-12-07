@@ -2,8 +2,11 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import { useTheme } from "next-themes";
+import { Button } from "@mui/material";
 
 export default function Home() {
+  const { resolvedTheme, setTheme } = useTheme();
   return (
     <div className={styles.container}>
       <Head>
@@ -13,6 +16,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <Button
+          onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
+        >
+          Click
+        </Button>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

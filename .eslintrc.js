@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
+    "no-unused-vars": "off",
     "require-jsdoc": "off",
   },
   settings: {
@@ -21,4 +22,4 @@ module.exports = {
       version: "latest",
     },
   },
-};
+}

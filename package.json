@@ -10,7 +10,7 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
-    "test-all": "yarn run check-format && yarn run check-lint && yarn run check-types && npm run build",
+    "test-all": "yarn run check-format && yarn run check-lint && yarn run check-types && yarn run build",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.16",
+    "@mui/lab": "^5.0.0-alpha.112",
     "@mui/material": "^5.10.16",
     "@tanstack/react-query": "^4.19.1",
     "@tanstack/react-query-devtools": "^4.18.0",
@@ -27,7 +28,9 @@
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "add": "^2.0.6",
+    "axios": "^1.2.1",
     "eslint-config-next": "13.0.5",
+    "framer-motion": "^7.7.3",
     "next": "13.0.5",
     "next-themes": "^0.2.1",
     "or": "^0.2.0",

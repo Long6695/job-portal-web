@@ -7,38 +7,51 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material"
-import { LoadingButton } from "@mui/lab"
-import React, { useState } from "react"
+import {LoadingButton} from "@mui/lab"
+import React, {useState} from "react"
 import LockOpenIcon from "@mui/icons-material/LockOpen"
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined"
 import Link from "next/link"
-import { motion } from "framer-motion"
-import { useSignIn } from "../../hooks/api/useSignIn"
-import { SignInFormData } from "../../hooks/api/types/credentials"
+import {motion} from "framer-motion"
+import {useMutation} from "@tanstack/react-query"
+import {toast} from "react-toastify"
+import {login} from "@/src/store/credentials"
+import {ILoginData} from "@/src/constants/credentials"
 
 const SignInPage = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down("tablet"))
+  const {mutate, isLoading} = useMutation({
+    mutationFn: (formData: ILoginData) => {
+      return login(formData)
+    },
+  })
 
   const [lock, setLock] = useState(true)
-  const [formData, setFormData] = useState<SignInFormData>({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
-  const { mutate, isLoading } = useSignIn(setFormData)
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     mutate(formData, {
-      onSuccess: async (data) => {
-        console.log(data)
-        console.log("why not?")
-      },
+      onSuccess: () =>
+        toast.success("Login Successfully", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }),
     })
   }
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const {name, value} = e.target
     setFormData({
       ...formData,
       [name]: value,
@@ -47,11 +60,11 @@ const SignInPage = () => {
 
   return (
     <motion.div
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1, linear: [0.5, 0.71, 1, 1.5] }}
-      initial={{ x: -300, opacity: 0 }}
+      animate={{x: 0, opacity: 1}}
+      transition={{duration: 1, linear: [0.5, 0.71, 1, 1.5]}}
+      initial={{x: -300, opacity: 0}}
     >
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1}}>
         <form onSubmit={onSubmit}>
           <Grid container columns={12}>
             {!matches && (
@@ -82,7 +95,7 @@ const SignInPage = () => {
                 </Typography>
                 <TextField
                   sx={{
-                    fieldset: { borderColor: "colors.darkBlue" },
+                    fieldset: {borderColor: "colors.darkBlue"},
                   }}
                   placeholder="Your email..."
                   name="email"
@@ -97,7 +110,7 @@ const SignInPage = () => {
                 </Typography>
                 <TextField
                   sx={{
-                    fieldset: { borderColor: "colors.darkBlue" },
+                    fieldset: {borderColor: "colors.darkBlue"},
                   }}
                   placeholder="Your password..."
                   name="password"
@@ -107,13 +120,13 @@ const SignInPage = () => {
                   InputProps={{
                     endAdornment: lock ? (
                       <HttpsOutlinedIcon
-                        sx={{ cursor: "pointer" }}
+                        sx={{cursor: "pointer"}}
                         fontSize="small"
                         onClick={() => setLock(false)}
                       />
                     ) : (
                       <LockOpenIcon
-                        sx={{ cursor: "pointer" }}
+                        sx={{cursor: "pointer"}}
                         fontSize="small"
                         onClick={() => setLock(true)}
                       />

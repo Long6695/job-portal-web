@@ -1,4 +1,4 @@
-import { ThemeOptions } from "@mui/material"
+import {ThemeOptions} from "@mui/material"
 import React from "react"
 /**
  *
@@ -92,7 +92,7 @@ const lightThemeOptions: ThemeOptions = {
     MuiButton: {
       variants: [
         {
-          props: { variant: "contained" },
+          props: {variant: "contained"},
           style: {
             backgroundColor: "#457b9d",
             ":hover": {
@@ -105,7 +105,7 @@ const lightThemeOptions: ThemeOptions = {
     MuiTypography: {
       variants: [
         {
-          props: { variant: "h5" },
+          props: {variant: "h5"},
           style: {
             color: "#1d3557",
             fontSize: 24,

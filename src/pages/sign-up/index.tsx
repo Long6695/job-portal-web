@@ -8,34 +8,32 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material"
-import React, { useState } from "react"
+import React, {useState} from "react"
 import LockOpenIcon from "@mui/icons-material/LockOpen"
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined"
 import Link from "next/link"
-import { motion } from "framer-motion"
-import { SignUpFormData } from "../../hooks/api/types/credentials"
-import { useSignUp } from "../../hooks/api/useSignUp"
-import { LoadingButton } from "@mui/lab"
+import {motion} from "framer-motion"
+import {LoadingButton} from "@mui/lab"
 
 const SignUpPage = () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down("tablet"))
 
   const [lock, setLock] = useState(true)
-  const [formData, setFormData] = useState<SignUpFormData>({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
   })
-  const { mutate, isLoading } = useSignUp(setFormData)
+  // const { mutate, isLoading } = useSignUp(setFormData)
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    mutate(formData)
+    // mutate(formData)
   }
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const {name, value} = e.target
     setFormData({
       ...formData,
       [name]: value,
@@ -44,11 +42,11 @@ const SignUpPage = () => {
 
   return (
     <motion.div
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1, linear: [0.5, 0.71, 1, 1.5] }}
-      initial={{ x: 300, opacity: 0 }}
+      animate={{x: 0, opacity: 1}}
+      transition={{duration: 1, linear: [0.5, 0.71, 1, 1.5]}}
+      initial={{x: 300, opacity: 0}}
     >
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1}}>
         <form onSubmit={onSubmit}>
           <Grid container columns={12}>
             <Grid item mobile={12} tablet={6} p={4} minHeight="100vh">
@@ -66,7 +64,7 @@ const SignUpPage = () => {
                 </Typography>
                 <TextField
                   sx={{
-                    fieldset: { borderColor: "colors.darkBlue" },
+                    fieldset: {borderColor: "colors.darkBlue"},
                   }}
                   placeholder="Your email..."
                   name="email"
@@ -80,7 +78,7 @@ const SignUpPage = () => {
                 </Typography>
                 <TextField
                   sx={{
-                    fieldset: { borderColor: "colors.darkBlue" },
+                    fieldset: {borderColor: "colors.darkBlue"},
                   }}
                   placeholder="Your password..."
                   name="password"
@@ -89,13 +87,13 @@ const SignUpPage = () => {
                   InputProps={{
                     endAdornment: lock ? (
                       <HttpsOutlinedIcon
-                        sx={{ cursor: "pointer" }}
+                        sx={{cursor: "pointer"}}
                         fontSize="small"
                         onClick={() => setLock(false)}
                       />
                     ) : (
                       <LockOpenIcon
-                        sx={{ cursor: "pointer" }}
+                        sx={{cursor: "pointer"}}
                         fontSize="small"
                         onClick={() => setLock(true)}
                       />
@@ -109,7 +107,7 @@ const SignUpPage = () => {
                 </Typography>
                 <TextField
                   sx={{
-                    fieldset: { borderColor: "colors.darkBlue" },
+                    fieldset: {borderColor: "colors.darkBlue"},
                   }}
                   placeholder="Your confirm password..."
                   name="confirmPassword"
@@ -118,13 +116,13 @@ const SignUpPage = () => {
                   InputProps={{
                     endAdornment: lock ? (
                       <HttpsOutlinedIcon
-                        sx={{ cursor: "pointer" }}
+                        sx={{cursor: "pointer"}}
                         fontSize="small"
                         onClick={() => setLock(false)}
                       />
                     ) : (
                       <LockOpenIcon
-                        sx={{ cursor: "pointer" }}
+                        sx={{cursor: "pointer"}}
                         fontSize="small"
                         onClick={() => setLock(true)}
                       />
@@ -134,7 +132,7 @@ const SignUpPage = () => {
               </Stack>
               <Stack alignItems="center" mt={10}>
                 <LoadingButton
-                  loading={isLoading}
+                  // loading={isLoading}
                   variant="contained"
                   type="submit"
                   color="primary"

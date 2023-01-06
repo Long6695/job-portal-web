@@ -1,14 +1,14 @@
 import React from "react"
-import { createTheme, ThemeProvider } from "@mui/material"
-import { useTheme } from "next-themes"
-import { ReactNode, useEffect, useState } from "react"
+import {createTheme, ThemeProvider} from "@mui/material"
+import {useTheme} from "next-themes"
+import {ReactNode, useEffect, useState} from "react"
 import lightThemeOptions from "../styles/theme/lightThemeOptions"
 import darkThemeOptions from "../styles/theme/darkThemeOptions"
 interface PageProviderProps {
   children: ReactNode
 }
-const PageProvider = ({ children }: PageProviderProps) => {
-  const { resolvedTheme } = useTheme()
+const PageProvider = ({children}: PageProviderProps) => {
+  const {resolvedTheme} = useTheme()
   const [currentTheme, setCurrentTheme] = useState(lightThemeOptions)
   useEffect(() => {
     resolvedTheme === "light"

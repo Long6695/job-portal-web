@@ -6,21 +6,21 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@mui/material"
-import {LoadingButton} from "@mui/lab"
-import React, {useState} from "react"
-import LockOpenIcon from "@mui/icons-material/LockOpen"
-import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined"
-import Link from "next/link"
-import {motion} from "framer-motion"
-import {useMutation} from "@tanstack/react-query"
-import {toast} from "react-toastify"
-import {login} from "@/src/store/credentials"
-import {ILoginData} from "@/src/constants/credentials"
+} from '@mui/material'
+import {LoadingButton} from '@mui/lab'
+import React, {useState} from 'react'
+import LockOpenIcon from '@mui/icons-material/LockOpen'
+import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined'
+import Link from 'next/link'
+import {motion} from 'framer-motion'
+import {useMutation} from '@tanstack/react-query'
+import {toast} from 'react-toastify'
+import {login} from '@/src/store/credentials'
+import {ILoginData} from '@/src/constants/credentials'
 
 const SignInPage = () => {
   const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down("tablet"))
+  const matches = useMediaQuery(theme.breakpoints.down('tablet'))
   const {mutate, isLoading} = useMutation({
     mutationFn: (formData: ILoginData) => {
       return login(formData)
@@ -29,23 +29,23 @@ const SignInPage = () => {
 
   const [lock, setLock] = useState(true)
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   })
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     mutate(formData, {
       onSuccess: () =>
-        toast.success("Login Successfully", {
-          position: "top-right",
+        toast.success('Login Successfully', {
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: 'light',
         }),
     })
   }
@@ -74,7 +74,7 @@ const SignInPage = () => {
                 p={4}
                 sx={{
                   background:
-                    "linear-gradient(to right bottom, #36EAEF, #6B0AC9)",
+                    'linear-gradient(to right bottom, #36EAEF, #6B0AC9)',
                 }}
               />
             )}
@@ -95,7 +95,7 @@ const SignInPage = () => {
                 </Typography>
                 <TextField
                   sx={{
-                    fieldset: {borderColor: "colors.darkBlue"},
+                    fieldset: {borderColor: 'colors.darkBlue'},
                   }}
                   placeholder="Your email..."
                   name="email"
@@ -110,23 +110,23 @@ const SignInPage = () => {
                 </Typography>
                 <TextField
                   sx={{
-                    fieldset: {borderColor: "colors.darkBlue"},
+                    fieldset: {borderColor: 'colors.darkBlue'},
                   }}
                   placeholder="Your password..."
                   name="password"
-                  type={lock ? "password" : "text"}
+                  type={lock ? 'password' : 'text'}
                   onChange={onChangeInput}
                   value={formData.password}
                   InputProps={{
                     endAdornment: lock ? (
                       <HttpsOutlinedIcon
-                        sx={{cursor: "pointer"}}
+                        sx={{cursor: 'pointer'}}
                         fontSize="small"
                         onClick={() => setLock(false)}
                       />
                     ) : (
                       <LockOpenIcon
-                        sx={{cursor: "pointer"}}
+                        sx={{cursor: 'pointer'}}
                         fontSize="small"
                         onClick={() => setLock(true)}
                       />

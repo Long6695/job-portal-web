@@ -1,9 +1,9 @@
-import React from "react"
-import Head from "next/head"
-import Image from "next/image"
-import styles from "../styles/Home.module.css"
-import {useTheme} from "next-themes"
-import {Button} from "@mui/material"
+import React from 'react'
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import {useTheme} from 'next-themes'
+import {Button} from '@mui/material'
 
 export default function Home() {
   const {resolvedTheme, setTheme} = useTheme()
@@ -17,7 +17,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <Button
-          onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
+          onClick={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
         >
           Click
         </Button>
@@ -26,7 +26,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{" "}
+          Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
 
@@ -69,7 +69,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>

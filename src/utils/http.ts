@@ -1,7 +1,7 @@
-import axios, {AxiosRequestConfig} from "axios"
+import axios, {AxiosRequestConfig} from 'axios'
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: 'http://localhost:5000/api/v1',
 })
 
 class Http {

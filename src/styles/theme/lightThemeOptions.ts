@@ -1,5 +1,5 @@
-import {ThemeOptions} from "@mui/material"
-import React from "react"
+import {ThemeOptions} from '@mui/material'
+import React from 'react'
 /**
  *
  * red: #e63946
@@ -12,7 +12,7 @@ import React from "react"
 
  */
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface BreakpointOverrides {
     xs: false // removes the `xs` breakpoint
     sm: false
@@ -26,7 +26,7 @@ declare module "@mui/material/styles" {
   }
 }
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface TypographyVariants {
     defaultText: React.CSSProperties
     label: React.CSSProperties
@@ -44,7 +44,7 @@ declare module "@mui/material/styles" {
 }
 
 // Update the Typography's variant prop options
-declare module "@mui/material/Typography" {
+declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     defaultText: true
     label: true
@@ -63,27 +63,27 @@ const lightThemeOptions: ThemeOptions = {
     },
   },
   palette: {
-    mode: "light",
+    mode: 'light',
   },
   typography: {
     defaultText: {
-      color: "#457b9d",
+      color: '#457b9d',
       fontSize: 14,
       fontWeight: 400,
     },
     label: {
-      color: "#457b9d",
+      color: '#457b9d',
       fontSize: 16,
       fontWeight: 700,
     },
     link: {
-      color: "#219ebc",
+      color: '#219ebc',
       fontSize: 14,
       fontWeight: 600,
-      cursor: "pointer",
+      cursor: 'pointer',
     },
     white: {
-      color: "#f1faee",
+      color: '#f1faee',
       fontSize: 14,
       fontWeight: 400,
     },
@@ -92,11 +92,11 @@ const lightThemeOptions: ThemeOptions = {
     MuiButton: {
       variants: [
         {
-          props: {variant: "contained"},
+          props: {variant: 'contained'},
           style: {
-            backgroundColor: "#457b9d",
-            ":hover": {
-              backgroundColor: "#1d3557",
+            backgroundColor: '#457b9d',
+            ':hover': {
+              backgroundColor: '#1d3557',
             },
           },
         },
@@ -105,9 +105,9 @@ const lightThemeOptions: ThemeOptions = {
     MuiTypography: {
       variants: [
         {
-          props: {variant: "h5"},
+          props: {variant: 'h5'},
           style: {
-            color: "#1d3557",
+            color: '#1d3557',
             fontSize: 24,
             fontWeight: 600,
           },
